@@ -38,7 +38,6 @@ app.post("/addagent", async (req, res) => {
       photoUrl: req.body.photoUrl,
       status: req.body.status,
       role: req.body.role,
-      sellPercent: req.body.sellPercent,
     };
 
     const userResponse = await admin.auth().createUser({
@@ -69,7 +68,6 @@ app.post("/addagent", async (req, res) => {
         photoUrl: user.photoUrl,
         role: user.role,
         status: user.status,
-        sellPercent: user.sellPercent,
       });
     res
       .status(201)
