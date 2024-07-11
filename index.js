@@ -75,7 +75,7 @@ app.post("/addagent", async (req, res) => {
   } catch (error) {
     res
       .status(400)
-      .json({ message: "Error registering user", error: error.message });
+      .json({ message: "Error registering user", error: error.message, msg: error });
     console.log(error);
   }
 });
