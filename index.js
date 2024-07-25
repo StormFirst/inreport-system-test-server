@@ -38,6 +38,9 @@ app.post("/addagent", async (req, res) => {
       photoUrl: req.body.photoUrl,
       status: req.body.status,
       role: req.body.role,
+      sellPercent: req.body.sellPercent,
+      priceLists: req.body.priceLists,
+      storages: req.body.storages,
     };
 
     const userResponse = await admin.auth().createUser({
@@ -68,14 +71,19 @@ app.post("/addagent", async (req, res) => {
         photoUrl: user.photoUrl,
         role: user.role,
         status: user.status,
+        sellPercent: user.sellPercent,
+        priceLists: user.priceLists,
+        storages: user.storages,
       });
     res
       .status(201)
       .json({ message: "User registered successfully", uid: userResponse.uid });
   } catch (error) {
-    res
-      .status(400)
-      .json({ message: "Error registering user", error: error.message, msg: error });
+    res.status(400).json({
+      message: "Error registering user",
+      error: error.message,
+      msg: error,
+    });
     console.log(error);
   }
 });
